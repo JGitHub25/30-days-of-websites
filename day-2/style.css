@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  height: 100vh;
+  grid-template-columns: repeat(12, 1fr);
+  border: 1px solid red;
+  align-items: center;
+}
+
+.item {
+  height: 50vh;
+}
+
+.item1 {
+  grid-column-start: 2;
+  grid-column-end: 6;
+  border: 1px solid green;
+}
+
+.item2 {
+  grid-column-start: 7;
+  grid-column-end: 5;
+  border: 1px solid blue;
+}
