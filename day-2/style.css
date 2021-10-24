@@ -16,38 +16,54 @@
 body {
   margin: 0 auto;
   max-width: 1000px;
+
+  background-color: #efefef;
 }
 
 .container {
   display: grid;
-  height: 100vh;
   grid-template-rows: auto auto 1fr auto auto auto;
-  border: 1px solid red;
   gap: 25px;
 }
 
 .item {
-  border: 4px solid tomato;
-  padding: 8px;
-  background-color: white;
-  border-radius: 6px;
+  border: 1px solid #a1a1a1;
+
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.25);
 }
 
 .header {
   background-image: url(https://images.unsplash.com/photo-1504750702121-4dc5b9a09402?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80);
-  height: 150px;
+  height: 210px;
   background-position: center;
+  border: 2px solid crimson;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
 
+  position: relative;
+}
+
+.header-text {
   font-family: "Chonburi", cursive;
   font-size: 48px;
   color: white;
+  font-weight: 400;
+
+  position: absolute;
+  bottom: 0;
+  right: 50px;
 }
 
 .navigation {
   display: flex;
   align-items: center;
   justify-content: space-around;
+
+  position: sticky;
+  top: 0;
+
+  background-color: white;
+  padding: 10px;
 }
 
 .navigation .logo {
@@ -56,7 +72,7 @@ body {
 
 .navigation-link {
   font-family: "Chonburi", cursive;
-  font-size: 18px;
+  font-size: 22px;
   text-decoration: none;
   text-transform: uppercase;
   color: #699a9b;
