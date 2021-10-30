@@ -1,4 +1,5 @@
 const selectionBtn = document.getElementById("selection-btn");
+const countryImg = document.getElementById("country-image");
 const countryName = document.getElementById("country-name");
 const countryCapital = document.getElementById("country-capital");
 const countryDescription = document.getElementById("country-description");
@@ -32,6 +33,7 @@ async function filterData(dataFetcher) {
 async function renderData(dataFilterer, dataFetcher) {
   const filteredData = await dataFilterer(dataFetcher);
 
+  countryImg.src = "https://source.unsplash.com/featured/?colombia";
   countryName.textContent = filteredData.officialName;
   countryCapital.textContent = filteredData.capital[0];
   countryDescription.textContent = `The ${filteredData.officialName} is a country located in South America. It has ${filteredData.population}. The capital is ${filteredData.capital[0]}.`;
