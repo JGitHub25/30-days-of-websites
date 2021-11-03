@@ -36,6 +36,11 @@ body {
 img {
   width: 150px;
   padding-bottom: 23px;
+  transition: all ease-in-out 200ms;
+}
+
+img:hover {
+  transform: scale(1.1);
 }
 
 .card {
@@ -45,6 +50,11 @@ img {
   padding: 20px 17px 30px 17px;
   background-color: azure;
   border-radius: 10px;
+  transition: all ease-in-out 200ms;
+}
+
+.card:hover {
+  transform: scale(1.05);
 }
 
 .country__info {
