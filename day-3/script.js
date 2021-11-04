@@ -1,45 +1,91 @@
-const selectionBtn = document.getElementById("selection-btn");
-const countryImg = document.getElementById("country-image");
-const countryName = document.getElementById("country-name");
-const countryCapital = document.getElementById("country-capital");
-const countryDescription = document.getElementById("country-description");
+const mainWrapper = document.getElementById("wrapper");
 
-// async function getCountry() {
-//   try {
-//     const response = await fetch("https://restcountries.com/v3.1/alpha/col");
-//     if (response.ok) {
-//       const jsonResponse = await response.json();
+//GET 12 RANDOM COUNTRIES.
+//a. get all countries.
+//b. get 12 random.
+//filter properties?
+//c. those 12 in an array are my data.
 
-//       return jsonResponse;
-//     }
-//     throw new Error("The request to get the country info failed!");
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
+//RENDER.
+//a. .map() el array.
 
-// async function filterData(dataFetcher) {
-//   const data = await dataFetcher();
-//   console.log(data);
-//   console.log(data[0].fifa);
-//   const {
-//     name: { official: officialName },
-//     capital,
-//     population,
-//   } = data[0];
-//   return { officialName, capital, population };
-// }
+async function getCountry() {
+  try {
+    const response = await fetch("https://restcountries.com/v3.1/all");
+    if (response.ok) {
+      const jsonResponse = await response.json();
+      //   console.log(jsonResponse);
+      return jsonResponse;
+    }
+    throw new Error("The request to get the countries info failed!");
+  } catch (error) {
+    console.log(error);
+  }
+}
 
-// async function renderData(dataFilterer, dataFetcher) {
-//   const filteredData = await dataFilterer(dataFetcher);
+async function filterData(dataFetcher) {
+  const allCountries = await dataFetcher();
+  let twelveRandomCountries = [];
 
-//   countryImg.src = "https://source.unsplash.com/featured/?colombia";
-//   countryName.textContent = filteredData.officialName;
-//   countryCapital.textContent = filteredData.capital[0];
-//   countryDescription.textContent = `The ${filteredData.officialName} is a country located in South America. It has ${filteredData.population}. The capital is ${filteredData.capital[0]}.`;
-//   console.log(filteredData.officialName, filteredData.capital[0]);
-// }
+  for (let i = 0; i < 12; i++) {
+    let randomNum = Math.floor(Math.random() * 250);
+    twelveRandomCountries.push(allCountries[randomNum]);
+  }
 
-// selectionBtn.addEventListener("click", () => {
-//   renderData(filterData, getCountry);
-// });
+  let filtered12Countries = twelveRandomCountries.map((fullFledgedCountry) => {
+    const {
+      name: { common: commonName, official: officialName },
+      flags: { svg: flag },
+      area,
+      population,
+      subregion,
+    } = fullFledgedCountry;
+
+    const [capital] = fullFledgedCountry.capital;
+
+    let filteredCountry = {
+      commonName,
+      officialName,
+      capital,
+      flag,
+      area,
+      population,
+      subregion,
+    };
+
+    return filteredCountry;
+  });
+  //   console.log(filtered12Countries);
+  return filtered12Countries;
+}
+
+async function renderData(dataFetcher, dataFilterer) {
+  const selectedCountries = await dataFilterer(dataFetcher);
+
+  let cardsHTML = selectedCountries.map((country) => {
+    return `<article class="card">
+          <img src="${country.flag}" alt="${country.commonName}" />
+          <div class="card__content">
+            <div class="country__info">
+              <h2>${country.commonName}</h2>
+              <h4>Capital: ${country.capital}</h4>
+            </div>
+            <p>
+              ${country.officialName} is a beautiful country in ${country.subregion}. There are ${country.population} people.
+            </p>
+            <h4>Area: ${country.area} km2</h4>
+            <p class="card_link">
+              <a
+                href="https://en.wikipedia.org/w/index.php?search=${country.commonName}&title=Special%3ASearch&go=Go"
+                target="_blank">Read more</a
+              >
+            </p>
+          </div>
+        </article>`;
+  });
+  mainWrapper.innerHTML = cardsHTML.join("");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  renderData(getCountry, filterData);
+});
