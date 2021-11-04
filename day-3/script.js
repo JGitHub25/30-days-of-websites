@@ -48,8 +48,8 @@ async function filterData(dataFetcher) {
       officialName,
       capital,
       flag,
-      area,
-      population,
+      area: area.toLocaleString(),
+      population: population.toLocaleString(),
       subregion,
     };
 
