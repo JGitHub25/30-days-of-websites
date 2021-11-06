@@ -1,15 +1,12 @@
-console.log("working");
-
 function toCsv() {
-  const rows = document.querySelectorAll("tr");
-
-  return [].slice
-    .call(rows)
+  const rows = [...document.querySelectorAll("tr")];
+  console.log("Rows:", rows);
+  return rows
     .map(function (row) {
       // Query all cells
-      const cells = row.querySelectorAll("th,td");
-      return [].slice
-        .call(cells)
+      const cells = [...row.querySelectorAll("th,td")];
+      console.log("Cells:", cells);
+      return cells
         .map(function (cell) {
           return cell.textContent;
         })
@@ -17,6 +14,8 @@ function toCsv() {
     })
     .join("\n");
 }
+let csvTable = toCsv();
+console.log("CSVtable:", csvTable);
 
 const download = function (text, fileName) {
   const link = document.createElement("a");
