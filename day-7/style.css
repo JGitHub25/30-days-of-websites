@@ -1,0 +1,501 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css?family=EB+Garamond:400|Oswald:400");
+/*
+
+=============== 
+*LAYOUT DEBUGGER - Remove later.
+===============
+*/
+html {
+  --outline: 1px dotted rgba(255, 0, 0, 0.5);
+  --outline: 0px;
+}
+* {
+  outline: var(--outline);
+}
+
+/*
+=============== 
+*BOX-SIZING
+===============
+*/
+*,
+::after,
+::before {
+  box-sizing: border-box; /** Added by JOHN*/
+}
+
+html {
+  font-size: 100%;
+} /*16px*/
+
+/** =============================================================VARIABLES========================================================= */
+:root {
+  /*
+=============== 
+*COLORS
+===============
+*/
+
+  /* dark shades of primary color*/
+  --primary-100: #ccdad9;
+  --primary-200: #99b5b4;
+  --primary-300: #66908e;
+  --primary-400: #336b69;
+  /* primary/main color */
+  --primary-500: #004643;
+  /* lighter shades of primary color */
+  --primary-600: #003836;
+  --primary-700: #002a28;
+  --primary-800: #001c1b;
+  --primary-900: #000e0d;
+
+  /*TODO: Get shades - shadowlord 20%*/
+  /* dark shades of secondary color*/
+  --secondary-100: #fef2df;
+  --secondary-200: #fde4bf;
+  --secondary-300: #fbd7a0;
+  --secondary-400: #fac980;
+  /* secondary color */ /*TODO: CUSTOMIZE*/
+  --secondary-500: #f9bc60;
+  /* lighter shades of secondary color */
+  --secondary-600: #c7964d;
+  --secondary-700: #95713a;
+  --secondary-800: #644b26;
+  --secondary-900: #322613;
+
+  /* grey: Blue gray*/ /*TODO: CUSTOMIZE*/
+  /** From tailwind.*/
+  --grey-50: #f8fafc;
+  --grey-100: #f1f5f9;
+  --grey-200: #e2e8f0;
+  --grey-300: #cbd5e1;
+  --grey-400: #94a3b8;
+  --grey-500: #64748b;
+  --grey-600: #475569;
+  --grey-700: #334155;
+  --grey-800: #1e293b;
+  --grey-900: #0f172a;
+
+  /* accent color */
+  --accent: #e16162;
+
+  /* Other utility colors. */
+  --black: #222;
+  --white: #fff;
+  --red-light: #f8d7da; /*!Error messages.*/
+  --red-dark: #842029;
+  --green-light: #d1e7dd; /**Success messages.*/
+  --green-dark: #0f5132;
+
+  /*
+=============== 
+*FONTS
+===============
+*/
+  --heading-font: "Oswald", sans-serif; /*TODO: CUSTOMIZE*/
+  --body-font: "EB Garamond", serif; /*TODO: CUSTOMIZE*/
+  --small-text: 0.875rem; /** Changed by JOHN- var name*/
+  --extra-small-text: 0.7em; /**small text relative to container.*/
+
+  /*
+=============== 
+*SPACERS
+===============
+*/
+  /**For vertical rhythm. Entre creados por mí y Javier.*/
+  --spacer-2xs: 0.5rem;
+  --spacer-xs: 0.75rem;
+  --spacer-s: 1rem;
+  --spacer-baseline: 1.5rem;
+  --spacer-l: 2rem;
+  --spacer-xl: 3rem;
+  --spacer-2xl: 4rem;
+  --spacer-3xl: 5rem;
+  --spacer-4xl: 6rem;
+  --spacer-5xl: 7rem;
+  --spacer-6xl: 8rem;
+
+  /*
+=============== 
+*BOX SHADOW
+===============
+*/
+  /** From tailwind.*/
+  --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --shadow-2: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-3: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-4: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  /*
+=============== 
+*ESSENTIALS
+===============
+*/
+  /*Layout*/ /*TODO: CUSTOMIZE*/
+  --max-width: 1120px; /*Boxed-content*/
+  --fixed-width: 600px; /*Fixed-sized content*/
+  /*Colors*/ /*TODO: CUSTOMIZE - CHECK ACCESIBILITY*/
+  --background-color-light: var(--primary-100);
+  --text-color-dark: var(--grey-900);
+  --background-color-dark: var(--primary-500);
+  --text-color-light: var(--grey-50);
+
+  /*Others*/ /*TODO: CUSTOMIZE*/
+  --borderRadius: 0.25rem;
+  --letterSpacing: 1px;
+  --transition: 0.2s ease-in-out all;
+}
+
+/*
+=============== 
+*TEXT STYLES
+===============
+*/
+body {
+  background: var(--background-color-light);
+  font-family: var(--body-font);
+  font-weight: 400;
+  line-height: 1.5; /*Usual 1.4-1.6*/
+  color: var(--text-color-dark);
+}
+
+.contrasting-section {
+  background: var(--background-color-dark);
+  color: var(--text-color-light);
+}
+
+p {
+  margin-bottom: 1.5rem; /*?ALTERNATIVE: 1rem*/
+  max-width: 40em; /*TODO: Added by JOHN*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  margin-bottom: 1.38rem; /** margins changed by JOHN*/
+  font-family: var(--heading-font);
+  font-weight: 400;
+  line-height: 1.3;
+  text-transform: capitalize; /** Added by JOHN*/
+  letter-spacing: var(--letterSpacing);
+}
+
+/**SCALE: Perfect 4th*/
+
+h1 {
+  margin-top: 0;
+  font-size: 4.209rem;
+}
+
+h2 {
+  font-size: 3.157rem;
+}
+
+h3 {
+  font-size: 2.369rem;
+}
+
+h4 {
+  font-size: 1.777rem;
+}
+
+h5 {
+  font-size: 1.333rem;
+}
+
+small,
+.text-small {
+  font-size: var(--small-text);
+}
+
+/** All styles below added by JOHN*/
+/* title */
+.title {
+  text-align: center;
+}
+
+.title-underline {
+  background: var(--primary-500);
+  width: 7rem;
+  height: 0.25rem;
+  margin: 0 auto;
+  margin-top: -1rem;
+}
+
+/*links*/
+a {
+  text-decoration: none;
+  /*Added by me.*/
+  color: var(--accent);
+  transition: var(--transition);
+}
+
+a:hover {
+  /*Added by me.*/
+  color: var(--secondary-300);
+}
+
+/*lists*/
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* alerts */
+.alert {
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 1rem;
+  border-color: transparent;
+  border-radius: var(--borderRadius);
+}
+
+.alert-danger {
+  color: var(--red-dark);
+  background: var(--red-light);
+}
+.alert-success {
+  color: var(--green-dark);
+  background: var(--green-light);
+}
+
+/* icons */
+.fa-icon::before {
+  font-size: 1.5rem;
+  color: var(--primary-500);
+}
+
+/*
+=============== 
+*IMAGES
+===============
+*/
+.img {
+  width: 100%; /*container dependant.*/
+  display: block; /*To avoid bottom gap.*/
+  object-fit: cover;
+}
+
+/*
+=============== 
+*BUTTONS
+===============
+*/
+.btn {
+  cursor: pointer;
+  color: var(--white);
+  background: var(--primary-500);
+  border: transparent;
+  border-radius: var(--borderRadius);
+  letter-spacing: var(--letterSpacing);
+  padding: 0.375rem 0.75rem;
+  box-shadow: var(--shadow-1);
+  transition: var(--transition);
+  text-transform: capitalize;
+  display: inline-block; /*To respect vertical margins. - Center w/ parent.*/
+}
+.btn:hover {
+  background: var(--primary-700);
+  box-shadow: var(--shadow-3);
+}
+.btn-hipster {
+  color: var(--primary-500);
+  background: var(--primary-200);
+}
+.btn-hipster:hover {
+  color: var(--primary-200);
+  background: var(--primary-700);
+}
+.btn-block {
+  width: 100%;
+}
+
+/*
+=============== 
+*FORMS
+===============
+*/
+.form {
+  width: 90vw;
+  max-width: var(--fixed-width);
+  background: var(--secondary-500);
+  border-radius: var(--borderRadius);
+  box-shadow: var(--shadow-2);
+  padding: 2rem 2.5rem;
+  margin: 3rem auto; /*Self-centered. Adjust if in container.*/
+}
+.form-label {
+  display: block;
+  font-size: var(--small-text);
+  margin-bottom: 0.5rem;
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border-radius: var(--borderRadius);
+  background: var(--grey-50);
+  border: 1px solid var(--grey-200);
+}
+
+.form-row {
+  margin-bottom: 1rem;
+}
+
+.form-radio-btn-label,
+.form-checkbox-label {
+  font-size: var(--small-text);
+  text-transform: capitalize;
+  letter-spacing: var(--letterSpacing);
+}
+
+.form-clue {
+  font-size: var(--extra-small-text);
+}
+
+.form-textarea {
+  height: 7rem;
+}
+::placeholder {
+  font-family: inherit;
+  color: var(--grey-400);
+}
+.form-alert {
+  color: var(--red-dark);
+  letter-spacing: var(--letterSpacing);
+  text-transform: capitalize;
+}
+
+/*
+=============== 
+*PRELOADER SPINNER
+===============
+*/
+
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  width: 6rem;
+  height: 6rem;
+  border: 5px solid var(--grey-400);
+  border-radius: 50%;
+  border-top-color: var(--primary-500);
+  animation: spinner 0.6s linear infinite;
+}
+.loading {
+  margin: 0 auto; /*Self-centered. Adjust if in container.*/
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  background: url("https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwallup.net%2Fwp-content%2Fuploads%2F2016%2F01%2F296416-landscape-nature-mountain-lake-trees-snow-clouds-forest.jpg&f=1&nofb=1");
+  background-size: cover;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.hero-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: var(--borderRadius);
+  border: 1px var(--text-color-dark) solid;
+  padding: var(--spacer-2xl);
+}
+
+/** =============================================================MEDIA QUERIES========================================================= */
+/*TODO: Media queries can go to Variables.*/
+/*TODO: Media queries - Desktop first*/
+@media only screen and (max-width: 641px) {
+  /**Mobile - SCALE: Major 2nd*/
+  /*TODO: CUSTOMIZE -typescale*/
+  h1 {
+    margin-top: 0;
+    font-size: 1.802rem;
+  }
+
+  h2 {
+    font-size: 1.602rem;
+  }
+
+  h3 {
+    font-size: 1.424rem;
+  }
+
+  h4 {
+    font-size: 1.266rem;
+  }
+
+  h5 {
+    font-size: 1.125rem;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  /**Tablet - SCALE: Minor 3rd*/
+  /*TODO: CUSTOMIZE -typescale*/
+  h1 {
+    margin-top: 0;
+    font-size: 2.488rem;
+  }
+
+  h2 {
+    font-size: 2.074rem;
+  }
+
+  h3 {
+    font-size: 1.728rem;
+  }
+
+  h4 {
+    font-size: 1.44rem;
+  }
+
+  h5 {
+    font-size: 1.2rem;
+  }
+}
+@media only screen and (max-width: 1025px) {
+}
+@media only screen and (max-width: 1281px) {
+}
+
+/*TODO: Media queries - Mobile first*/
+@media only screen and (min-width: 640px) {
+}
+@media only screen and (min-width: 768px) {
+}
+@media only screen and (min-width: 1024px) {
+}
+@media only screen and (min-width: 1280px) {
+}
+@media only screen and (min-width: 1537px) {
+}
