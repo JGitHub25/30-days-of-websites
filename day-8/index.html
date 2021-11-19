@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Nueva Marcación - Colombia</title>
+  </head>
+  <body>
+    <div class="form-row">
+      <span class="form-label">Quiero llamar desde:</span>
+      <input id="fijo" type="radio" name="origen" value="fijo" />
+      <label class="form-radio-btn-label" for="fijo"> Fijo </label>
+      <br />
+      <input id="celular" type="radio" name="origen" value="celular" />
+      <label class="form-radio-btn-label" for="celular">Celular</label>
+      <br />
+    </div>
+    <div class="form-row">
+      <span class="form-label">Quiero llamar a un:</span>
+      <input id="fijo" type="radio" name="destino" value="fijo" />
+      <label class="form-radio-btn-label" for="fijo"> Fijo </label>
+      <br />
+      <input id="celular" type="radio" name="destino" value="celular" />
+      <label class="form-radio-btn-label" for="celular">Celular</label>
+      <br />
+    </div>
+    <div class="form-row">
+      <span class="form-label">Mi llamada es:</span>
+      <input id="local" type="radio" name="tipo-llamada" value="local" />
+      <label class="form-radio-btn-label" for="local"> Local </label>
+      <br />
+      <input id="nacional" type="radio" name="tipo-llamada" value="nacional" />
+      <label class="form-radio-btn-label" for="nacional">Nacional</label>
+      <br />
+    </div>
+    <div class="form-row">
+      <label for="role" class="form-label">
+        <!-- Este br sí debe ir aquí? -->
+        Deseo llamar a: <br />
+      </label>
+      <select
+        class="form-input"
+        id="ciudad"
+        name="ciudad"
+        placeholder="Seleccione una ciudad"
+      >
+        <option value="medellin">Medellín</option>
+        <option value="bogota">Bogotá</option>
+        <option value="cali">Cali</option>
+        <option value="cartagena">Cartagena</option>
+        <option value="pasto">Pasto</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label for="telefono">Ingrese su telefono:</label>
+      <input type="tel" id="telefono" name="telefono" pattern="[0-9]{7}" />
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
