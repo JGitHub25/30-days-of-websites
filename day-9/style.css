@@ -464,6 +464,14 @@ section {
   color: var(--primary-500);
 }
 
+.product-title::after {
+  display: block;
+  content: "";
+  background-color: var(--secondary-500);
+  width: 40px;
+  height: 1.7px;
+}
+
 .product-description {
   display: block;
   text-align: justify;
@@ -478,10 +486,15 @@ section {
 
 .product-price {
   font-weight: bold;
+  background-color: var(--accent);
+  padding: 3px;
+  border-radius: var(--borderRadius);
+  /* box-shadow: var(--shadow-1); */
 }
 
 .rating-icon {
   margin-right: 5px;
+  color: coral;
 }
 
 /** =============================================================MEDIA QUERIES========================================================= */
