@@ -25,13 +25,24 @@ async function getCountry() {
 
 async function filterData(dataFetcher) {
   const allCountries = await dataFetcher();
-  let twelveRandomCountries = [];
+  const twelveRandomCountries = [];
+  const numbersDrawn = [];
 
   for (let i = 0; i < 12; i++) {
     let randomNum = Math.floor(Math.random() * 250);
-    twelveRandomCountries.push(allCountries[randomNum]);
-  }
 
+    while (numbersDrawn.includes(randomNum)) {
+      //Check that the country hasn't been selected before.
+      console.log(`El país número ${randomNum} ya estaba.`);
+      randomNum = Math.floor(Math.random() * 250);
+    }
+
+    numbersDrawn.push(randomNum);
+
+    twelveRandomCountries.push(allCountries[randomNum]);
+    console.log(`El país número ${randomNum} se incluyó.`);
+  }
+  console.log(numbersDrawn);
   let filtered12Countries = twelveRandomCountries.map((fullFledgedCountry) => {
     const {
       name: { common: commonName, official: officialName },
