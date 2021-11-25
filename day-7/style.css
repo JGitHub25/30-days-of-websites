@@ -93,6 +93,7 @@ html {
 *FONTS
 ===============
 */
+  /*TODO: Instead of a font for headings and another for body I can use the same for both with different font-weight and use another for 'accent'. */
   --heading-font: "Oswald", sans-serif; /*TODO: CUSTOMIZE*/
   --body-font: "EB Garamond", serif; /*TODO: CUSTOMIZE*/
   --small-text: 0.875rem; /** Changed by JOHN- var name*/
